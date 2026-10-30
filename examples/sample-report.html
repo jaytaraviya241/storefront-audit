@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Storefront audit: 127.0.0.1:33787</title>
+<style>
+:root{--ink:#17202a;--muted:#5b6670;--line:#dfe3e6;--bg:#f7f8f9;--critical:#b42318;--high:#b54708;--medium:#175cd3}
+*{box-sizing:border-box}body{margin:0;font:15px/1.55 system-ui,-apple-system,Segoe UI,Roboto,sans-serif;color:var(--ink);background:#fff}
+main{max-width:920px;margin:0 auto;padding:40px 20px}h1{font-size:28px;margin:0 0 4px}h2{font-size:20px;margin:40px 0 12px;border-bottom:1px solid var(--line);padding-bottom:6px}
+.meta{color:var(--muted)}.scores{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:10px;margin:20px 0}
+.score{background:var(--bg);border-radius:8px;padding:12px}.score b{display:block;font-size:26px}.score span{color:var(--muted);font-size:13px}
+.card{border:1px solid var(--line);border-radius:8px;padding:16px;margin:12px 0}.badge{display:inline-block;font-size:12px;font-weight:600;text-transform:uppercase;padding:2px 8px;border-radius:99px;color:#fff;margin-right:8px}
+.critical{background:var(--critical)}.high{background:var(--high)}.medium{background:var(--medium)}
+.card h3{display:inline;font-size:16px}.card dl{margin:10px 0 0}.card dt{font-weight:600;margin-top:8px}.card dd{margin:2px 0 0}
+.evidence{font:12px/1.5 ui-monospace,Menlo,monospace;background:var(--bg);padding:8px;border-radius:6px;overflow-wrap:anywhere}
+table{border-collapse:collapse;width:100%;font-size:14px}td,th{border-bottom:1px solid var(--line);padding:6px;text-align:left}
+footer{margin-top:40px;color:var(--muted);font-size:13px}
+</style></head><body><main>
+<h1>Storefront audit</h1>
+<div class="meta">https://fake-pies.example/ · 2026-10-30 12:41 UTC · Prepared by storefront-audit sample</div>
+<div class="scores">
+
+<div class="score"><b>73</b><span>Overall</span></div>
+<div class="score"><b>63</b><span>Technical</span></div>
+<div class="score"><b>55</b><span>SEO</span></div>
+<div class="score"><b>76</b><span>Structured data</span></div>
+<div class="score"><b>88</b><span>Performance</span></div>
+<div class="score"><b>83</b><span>Accessibility</span></div>
+</div>
+<h2>Summary</h2>
+<p>6 pages audited (1 home, 2 product, 1 collection, 2 page), 1 internal links checked, 5 URLs in the sitemap.
+Platform: <b>Shopify</b> (theme: Dawn).
+Detected third-party tools: Klaviyo.</p>
+<p><b>2</b> critical, <b>5</b> high and <b>5</b> medium priority findings.</p>
+
+
+<h2>Fix now</h2>
+<div class="card"><span class="badge critical">critical</span><h3>Site is not served over HTTPS</h3>
+<dl><dt>Why it matters</dt><dd>Browsers label HTTP pages &#39;Not secure&#39; at checkout, and search engines favour HTTPS.</dd><dt>How to fix</dt><dd>Install a TLS certificate and redirect every HTTP request to HTTPS.</dd>
+<dt>Evidence (1 affected)</dt><dd class="evidence">https://fake-pies.example/<br></dd></dl></div>
+
+<div class="card"><span class="badge critical">critical</span><h3>Important pages are set to noindex</h3>
+<dl><dt>Why it matters</dt><dd>These pages are in the sitemap but tell search engines not to index them.</dd><dt>How to fix</dt><dd>Remove noindex from pages meant to rank, or drop them from the sitemap.</dd>
+<dt>Evidence (1 affected)</dt><dd class="evidence">https://fake-pies.example/pages/hidden<br></dd></dl></div>
+
+
+<h2>Fix next</h2>
+<div class="card"><span class="badge high">high</span><h3>Images without alt text</h3>
+<dl><dt>Why it matters</dt><dd>Screen-reader users hear nothing, and image search has no description to index.</dd><dt>How to fix</dt><dd>Add descriptive alt text to product and content images; use alt=&#34;&#34; only for decoration.</dd>
+<dt>Evidence (2 affected)</dt><dd class="evidence">https://fake-pies.example/products/bad-pie: 2 of 3 images<br></dd></dl></div>
+
+<div class="card"><span class="badge high">high</span><h3>Broken internal links</h3>
+<dl><dt>Why it matters</dt><dd>Dead links waste crawl budget and send shoppers to error pages.</dd><dt>How to fix</dt><dd>Fix or redirect each link; add redirects when products are removed.</dd>
+<dt>Evidence (1 affected)</dt><dd class="evidence">https://fake-pies.example/pages/gone returned 404 (linked from https://fake-pies.example/)<br></dd></dl></div>
+
+<div class="card"><span class="badge high">high</span><h3>Broken structured data</h3>
+<dl><dt>Why it matters</dt><dd>Search engines ignore JSON-LD that fails to parse.</dd><dt>How to fix</dt><dd>Fix the JSON syntax in the theme snippet.</dd>
+<dt>Evidence (1 affected)</dt><dd class="evidence">https://fake-pies.example/products/bad-pie (1 block(s))<br></dd></dl></div>
+
+<div class="card"><span class="badge high">high</span><h3>Product pages without Product schema</h3>
+<dl><dt>Why it matters</dt><dd>Without it products are not eligible for price and availability in search results.</dd><dt>How to fix</dt><dd>Output Product JSON-LD with name, image, offers.price, priceCurrency and availability.</dd>
+<dt>Evidence (1 affected)</dt><dd class="evidence">https://fake-pies.example/products/bad-pie<br></dd></dl></div>
+
+<div class="card"><span class="badge high">high</span><h3>Render-blocking scripts in &lt;head&gt;</h3>
+<dl><dt>Why it matters</dt><dd>The browser stops drawing the page until each one downloads and runs.</dd><dt>How to fix</dt><dd>Add defer or async, or move the script to the end of the body.</dd>
+<dt>Evidence (1 affected)</dt><dd class="evidence">https://fake-pies.example/products/bad-pie: 1 blocking script(s), e.g. https://widgets.example-reviews.com/w.js<br></dd></dl></div>
+
+
+<h2>Improve</h2>
+<div class="card"><span class="badge medium">medium</span><h3>Duplicate meta descriptions</h3>
+<dl><dt>Why it matters</dt><dd>Identical snippets make pages compete with each other in search.</dd><dt>How to fix</dt><dd>Make each meta description specific to the page.</dd>
+<dt>Evidence (5 affected)</dt><dd class="evidence">&#39;a perfectly reasonable description for this page of the stor&#39; on 5 pages: https://fake-pies.example/, https://fake-pies.example/products/good-pie, https://fake-pies.example/collections/all<br></dd></dl></div>
+
+<div class="card"><span class="badge medium">medium</span><h3>Pages with more than one H1</h3>
+<dl><dt>Why it matters</dt><dd>Several H1s blur the page&#39;s main topic.</dd><dt>How to fix</dt><dd>Keep one H1 and demote the rest to H2/H3.</dd>
+<dt>Evidence (1 affected)</dt><dd class="evidence">https://fake-pies.example/products/bad-pie (2 H1s)<br></dd></dl></div>
+
+<div class="card"><span class="badge medium">medium</span><h3>Missing language attribute</h3>
+<dl><dt>Why it matters</dt><dd>Screen readers and translation tools cannot tell which language the page is in.</dd><dt>How to fix</dt><dd>Set &lt;html lang=&#34;...&#34;&gt; in the theme layout.</dd>
+<dt>Evidence (1 affected)</dt><dd class="evidence">https://fake-pies.example/pages/about<br></dd></dl></div>
+
+<div class="card"><span class="badge medium">medium</span><h3>Pages without a meta description</h3>
+<dl><dt>Why it matters</dt><dd>Search engines then improvise a snippet, often from navigation text.</dd><dt>How to fix</dt><dd>Write a 70-160 character description for each template and key page.</dd>
+<dt>Evidence (1 affected)</dt><dd class="evidence">https://fake-pies.example/products/bad-pie<br></dd></dl></div>
+
+<div class="card"><span class="badge medium">medium</span><h3>Titles too short or too long</h3>
+<dl><dt>Why it matters</dt><dd>Titles under 15 characters waste the slot; over 70 get cut off in results.</dd><dt>How to fix</dt><dd>Keep titles roughly 30-60 characters with the product or topic first.</dd>
+<dt>Evidence (1 affected)</dt><dd class="evidence">https://fake-pies.example/collections/all (3 chars)<br></dd></dl></div>
+
+<h2>Pages audited</h2><table><tr><th>Type</th><th>URL</th></tr>
+<tr><td>home</td><td>https://fake-pies.example/</td></tr><tr><td>product</td><td>https://fake-pies.example/products/good-pie</td></tr><tr><td>product</td><td>https://fake-pies.example/products/bad-pie</td></tr><tr><td>collection</td><td>https://fake-pies.example/collections/all</td></tr><tr><td>page</td><td>https://fake-pies.example/pages/about</td></tr><tr><td>page</td><td>https://fake-pies.example/pages/hidden</td></tr></table>
+<footer>Automated audit of publicly available pages, generated by storefront-audit. robots.txt was respected and requests were rate-limited.
+Response times are measured from the auditing location and are indicative only. Findings are evidence for review, not a guarantee of ranking or revenue outcomes.</footer>
+</main></body></html>

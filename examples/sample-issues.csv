@@ -1,0 +1,13 @@
+severity,category,check,title,affected,evidence
+critical,technical,https_missing,Site is not served over HTTPS,1,https://fake-pies.example/
+critical,seo,noindex,Important pages are set to noindex,1,https://fake-pies.example/pages/hidden
+high,accessibility,img_alt_missing,Images without alt text,2,https://fake-pies.example/products/bad-pie: 2 of 3 images
+high,technical,broken_links,Broken internal links,1,https://fake-pies.example/pages/gone returned 404 (linked from https://fake-pies.example/)
+high,structured_data,jsonld_invalid,Broken structured data,1,https://fake-pies.example/products/bad-pie (1 block(s))
+high,structured_data,product_schema_missing,Product pages without Product schema,1,https://fake-pies.example/products/bad-pie
+high,performance,render_blocking_scripts,Render-blocking scripts in <head>,1,"https://fake-pies.example/products/bad-pie: 1 blocking script(s), e.g. https://widgets.example-reviews.com/w.js"
+medium,seo,description_duplicate,Duplicate meta descriptions,5,"'a perfectly reasonable description for this page of the stor' on 5 pages: https://fake-pies.example/, https://fake-pies.example/products/good-pie, https://fake-pies.example/collections/all"
+medium,seo,h1_multiple,Pages with more than one H1,1,https://fake-pies.example/products/bad-pie (2 H1s)
+medium,accessibility,lang_missing,Missing language attribute,1,https://fake-pies.example/pages/about
+medium,seo,meta_description_missing,Pages without a meta description,1,https://fake-pies.example/products/bad-pie
+medium,seo,title_length,Titles too short or too long,1,https://fake-pies.example/collections/all (3 chars)

@@ -1,0 +1,175 @@
+{
+  "site": "https://fake-pies.example/",
+  "audited_at": "2026-10-30 12:41 UTC",
+  "error": "",
+  "platform": "Shopify",
+  "theme": "Dawn",
+  "apps": [
+    "Klaviyo"
+  ],
+  "third_party_hosts": 1,
+  "pages_audited": 6,
+  "links_checked": 1,
+  "sitemap_urls": 5,
+  "requests": 12,
+  "seconds": 0.0,
+  "scores": {
+    "technical": 63,
+    "seo": 55,
+    "structured_data": 76,
+    "performance": 88,
+    "accessibility": 83,
+    "overall": 73
+  },
+  "counts": {
+    "critical": 2,
+    "high": 5,
+    "medium": 5
+  },
+  "findings": [
+    {
+      "check": "https_missing",
+      "severity": "critical",
+      "category": "technical",
+      "title": "Site is not served over HTTPS",
+      "why": "Browsers label HTTP pages 'Not secure' at checkout, and search engines favour HTTPS.",
+      "fix": "Install a TLS certificate and redirect every HTTP request to HTTPS.",
+      "evidence": [
+        "https://fake-pies.example/"
+      ],
+      "affected": 1
+    },
+    {
+      "check": "noindex",
+      "severity": "critical",
+      "category": "seo",
+      "title": "Important pages are set to noindex",
+      "why": "These pages are in the sitemap but tell search engines not to index them.",
+      "fix": "Remove noindex from pages meant to rank, or drop them from the sitemap.",
+      "evidence": [
+        "https://fake-pies.example/pages/hidden"
+      ],
+      "affected": 1
+    },
+    {
+      "check": "img_alt_missing",
+      "severity": "high",
+      "category": "accessibility",
+      "title": "Images without alt text",
+      "why": "Screen-reader users hear nothing, and image search has no description to index.",
+      "fix": "Add descriptive alt text to product and content images; use alt=\"\" only for decoration.",
+      "evidence": [
+        "https://fake-pies.example/products/bad-pie: 2 of 3 images"
+      ],
+      "affected": 2
+    },
+    {
+      "check": "broken_links",
+      "severity": "high",
+      "category": "technical",
+      "title": "Broken internal links",
+      "why": "Dead links waste crawl budget and send shoppers to error pages.",
+      "fix": "Fix or redirect each link; add redirects when products are removed.",
+      "evidence": [
+        "https://fake-pies.example/pages/gone returned 404 (linked from https://fake-pies.example/)"
+      ],
+      "affected": 1
+    },
+    {
+      "check": "jsonld_invalid",
+      "severity": "high",
+      "category": "structured_data",
+      "title": "Broken structured data",
+      "why": "Search engines ignore JSON-LD that fails to parse.",
+      "fix": "Fix the JSON syntax in the theme snippet.",
+      "evidence": [
+        "https://fake-pies.example/products/bad-pie (1 block(s))"
+      ],
+      "affected": 1
+    },
+    {
+      "check": "product_schema_missing",
+      "severity": "high",
+      "category": "structured_data",
+      "title": "Product pages without Product schema",
+      "why": "Without it products are not eligible for price and availability in search results.",
+      "fix": "Output Product JSON-LD with name, image, offers.price, priceCurrency and availability.",
+      "evidence": [
+        "https://fake-pies.example/products/bad-pie"
+      ],
+      "affected": 1
+    },
+    {
+      "check": "render_blocking_scripts",
+      "severity": "high",
+      "category": "performance",
+      "title": "Render-blocking scripts in <head>",
+      "why": "The browser stops drawing the page until each one downloads and runs.",
+      "fix": "Add defer or async, or move the script to the end of the body.",
+      "evidence": [
+        "https://fake-pies.example/products/bad-pie: 1 blocking script(s), e.g. https://widgets.example-reviews.com/w.js"
+      ],
+      "affected": 1
+    },
+    {
+      "check": "description_duplicate",
+      "severity": "medium",
+      "category": "seo",
+      "title": "Duplicate meta descriptions",
+      "why": "Identical snippets make pages compete with each other in search.",
+      "fix": "Make each meta description specific to the page.",
+      "evidence": [
+        "'a perfectly reasonable description for this page of the stor' on 5 pages: https://fake-pies.example/, https://fake-pies.example/products/good-pie, https://fake-pies.example/collections/all"
+      ],
+      "affected": 5
+    },
+    {
+      "check": "h1_multiple",
+      "severity": "medium",
+      "category": "seo",
+      "title": "Pages with more than one H1",
+      "why": "Several H1s blur the page's main topic.",
+      "fix": "Keep one H1 and demote the rest to H2/H3.",
+      "evidence": [
+        "https://fake-pies.example/products/bad-pie (2 H1s)"
+      ],
+      "affected": 1
+    },
+    {
+      "check": "lang_missing",
+      "severity": "medium",
+      "category": "accessibility",
+      "title": "Missing language attribute",
+      "why": "Screen readers and translation tools cannot tell which language the page is in.",
+      "fix": "Set <html lang=\"...\"> in the theme layout.",
+      "evidence": [
+        "https://fake-pies.example/pages/about"
+      ],
+      "affected": 1
+    },
+    {
+      "check": "meta_description_missing",
+      "severity": "medium",
+      "category": "seo",
+      "title": "Pages without a meta description",
+      "why": "Search engines then improvise a snippet, often from navigation text.",
+      "fix": "Write a 70-160 character description for each template and key page.",
+      "evidence": [
+        "https://fake-pies.example/products/bad-pie"
+      ],
+      "affected": 1
+    },
+    {
+      "check": "title_length",
+      "severity": "medium",
+      "category": "seo",
+      "title": "Titles too short or too long",
+      "why": "Titles under 15 characters waste the slot; over 70 get cut off in results.",
+      "fix": "Keep titles roughly 30-60 characters with the product or topic first.",
+      "evidence": [
+        "https://fake-pies.example/collections/all (3 chars)"
+      ],
+      "affected": 1
+    }
+  ]
+}
